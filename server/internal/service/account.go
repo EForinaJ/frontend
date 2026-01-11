@@ -1,0 +1,29 @@
+package service
+
+import (
+	"context"
+	dao_account "server/internal/type/account/dao"
+	dto_account "server/internal/type/account/dto"
+)
+
+// 定义显示接口
+type IAccount interface {
+	GetDetail(ctx context.Context) (res *dao_account.Detail, err error)
+	Edit(ctx context.Context, req *dto_account.Edit) (err error)
+}
+
+// 定义接口变量
+var localAccount IAccount
+
+// 定义一个获取接口的方法
+func Account() IAccount {
+	if localAccount == nil {
+		panic("implement not found for interface IAccount, forgot register?")
+	}
+	return localAccount
+}
+
+// 定义一个接口实现的注册方法
+func RegisterAccount(i IAccount) {
+	localAccount = i
+}
