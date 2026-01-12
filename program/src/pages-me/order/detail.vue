@@ -11,7 +11,7 @@
                     <template #title>
                         <view class="flex items-center gap-2">
                             <text class="text-text-secondary text-xs font-700">{{detail.product.game ?? "游戏分类"}}</text>
-                            <sar-tag plain theme="primary" size="small">{{detail.product.type ?? "游戏类型"}}</sar-tag>
+                            <sar-tag plain theme="primary" size="small">{{detail.product.category ?? "游戏类型"}}</sar-tag>
                         </view>
                     </template>
                     <template #extra>
@@ -34,7 +34,7 @@
                             已退款
                         </text>
                     </template>
-                    <template #footer>
+                    <!-- <template #footer>
                         <view class="flex justify-end gap-2">
                             <sar-button 
                             @click="handleCancel(detail.id)"
@@ -43,7 +43,6 @@
                                 @click="handleDelete(detail.id)"
                             v-if="detail.status == OrderStatus.Cancel" 
                             size="mini" inline type="outline" theme="danger">删除订单</sar-button>
-
                             <sar-button 
                             @click="handlePay(detail.id,detail.status)"
                             v-if="detail.status == OrderStatus.PendingPayment" 
@@ -53,7 +52,7 @@
                             v-if="detail.status == OrderStatus.Completed" 
                             size="mini" inline type="default">去评价</sar-button>
                         </view>
-                    </template>
+                    </template> -->
                     <view class="flex gap-2">
                         <sar-image
                             :src="detail.product.pic"
@@ -62,15 +61,12 @@
                             radius="12rpx"
                         ></sar-image>
                         <view class="flex-1">
-                            <view class="break-all break-words text-text-primary font-700">
+                            <view class="break-all break-words text-[36rpx] text-text-primary font-700">
                                 {{detail.product.name}}
-                            </view>
-                            <view class="break-all break-words text-text-secondary text-xs mt-10rpx">
-                                {{detail.specifications}}
                             </view>
                         </view>
                         <view class="flex flex-col items-center justify-center gap-1">
-                            <text class="text-text-primary text-xs font-700">{{detail.unitPrice}}{{siteStore.siteInfo.symbol}}</text>
+                            <text class="text-text-primary text-xs font-700">{{detail.unitPrice}}{{siteStore.siteInfo.symbol}}/{{ detail.unit }}</text>
                             <text class="text-text-primary text-xs font-700">*{{detail.quantity}}</text>
                         </view>
                     </view>
@@ -90,38 +86,6 @@
                         <text class="text-text-primary font-700">{{detail.actualAmount}}{{siteStore.siteInfo.symbol }}</text>
                     </view>
                 </sar-card>
-            </view>
-
-            <view class="mt-40rpx bg-white rounded-lg mx-30rpx">
-                <sar-list card>
-                    <sar-list-item arrow @click="weChatVisibleSetTrue">
-                        <template #title>
-                            <view class="flex items-center gap-2">
-                                <i class="iconfont icon-weichat text-[#3eb744] text-[40rpx]"></i>
-                                <text>微信客服号</text>
-                            </view>
-                        </template>
-                        <template #description>
-                            关注{{ siteStore.siteInfo.title }},随时掌上联系
-                        </template>
-                    </sar-list-item>
-                    <sar-list-item arrow @click="copy">
-                        <template #title>
-                            <view class="flex items-center gap-2">
-                                <sar-image
-                                    :src="siteStore.siteInfo.contact.icon"
-                                    width="40rpx"
-                                    height="40rpx"
-                                    radius="12rpx"
-                                ></sar-image>
-                                <text>{{siteStore.siteInfo.contact.platform}}值班客服</text>
-                            </view>
-                        </template>
-                        <template #description>
-                            在线时间:{{siteStore.siteInfo.contact.onlineTime}}
-                        </template>
-                    </sar-list-item>
-                </sar-list>
             </view>
 
             <view class="mx-30rpx mt-40rpx rounded-lg">
@@ -191,17 +155,6 @@
             </view>
         </view>
 
-        <sar-overlay :visible="weChatVisible" @click="weChatVisiblealse">
-            <view class="flex items-center justify-center h-full">
-                <view class="w-400rpx h-400rpx bg-white rounded-lg p-20rpx">
-                    <sar-image
-                        :src="siteStore.siteInfo.contact.wechat"
-                        width="400rpx"
-                        height="400rpx"
-                    ></sar-image>
-                </view>
-            </view>
-        </sar-overlay>
        <sar-toast-agent />
        <sar-dialog-agent />
     </view>
@@ -244,25 +197,6 @@ const getData = async () => {
     fetchSetFalse()
 }
 
-
-
-const { bool:weChatVisible, setTrue:weChatVisibleSetTrue, setFalse:weChatVisiblealse } = useBoolean()
-
-const copy = async () => {
-    uni.setClipboardData({
-    data: siteStore.siteInfo.contact.number, // 替换为你需要复制的实际文本
-    success: function () {
-        uni.showToast({
-        title: `已复制平台号码`,
-        icon: 'success'
-        });
-    },
-    fail: function (err) {
-        console.log('复制失败', err);
-        // 处理复制失败的情况
-    }
-    });
-}
 
 const handleComment = (id:number) =>{
     uni.navigateTo({

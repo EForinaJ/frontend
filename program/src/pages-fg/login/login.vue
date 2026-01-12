@@ -51,7 +51,6 @@
   
 <script lang="ts" setup>
 import NavBar from "@/components/nav-bar.vue";
-import { useAccountStore } from "@/store";
 import { useTokenStore } from '@/store/token'
 import { getStatusBarHeight, getTitleBarHeight, getWindowHeight } from '@/utils/systemInfo';
 definePage({

@@ -74,6 +74,7 @@ export default defineConfig(({ command, mode }) => {
         subPackages: [
           'src/pages-fg', // 这个是相对必要的路由，尽量留着（登录页、注册页、404页等）
           'src/pages-me',
+          'src/pages-protocol',
         ],
         dts: 'src/types/uni-pages.d.ts',
       }),

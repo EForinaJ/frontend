@@ -16,16 +16,9 @@
             imageType: Array<string>,
             symbol: string;   // 货币类型
         }
-        type DictData = {
-            name: string;
-            value: string;
-        }
-    }
-    namespace Dto{
-        interface Query  {
-            page: number;
-            limit: number;
-            type?: number
+        type Protocol = {
+            title: string;
+            content: string;
         }
     }
 }

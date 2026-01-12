@@ -36,7 +36,7 @@ console.log('systemInfo', systemInfo)
 // windowTop: 0
 // windowWidth: 390
 export { safeAreaInsets, systemInfo }
-
+export const getWindowWidth = () => systemInfo.windowWidth || 0
 export const getWindowHeight = () => systemInfo.windowHeight || 0
 
 export const getStatusBarHeight = () => systemInfo.statusBarHeight || 0

@@ -1,7 +1,7 @@
 <template>
     <view class="nav-bar-container">
         <view class="bg-white
-            fixed left-0 top-0 w-full z-36
+            fixed left-0 top-0 w-full z-36 box-border
         ">
             <view 
             :style="{height:getStatusBarHeight()+'px'}"
@@ -14,7 +14,7 @@
                     <sar-icon name="left" size="40rpx" />
                 </view>
                 <view class="flex-1 flex items-center justify-center">
-                    <view class=" font-700
+                    <view class=" font-700 text-[36rpx] mr-40rpx
                         text-text-primary
                         leading-none
                     ">{{ title }}</view>

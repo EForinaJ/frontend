@@ -9,6 +9,7 @@ import (
 type ISite interface {
 	// 登录接口
 	GetInfo(ctx context.Context) (res *dao_site.Detail, err error)
+	GetProtocol(ctx context.Context, key string) (res *dao_site.Protocol, err error)
 	// GetGameOptions(ctx context.Context) (res []*dao_site.Options, err error)
 	// GetUserOptions(ctx context.Context, phone string) (res []*dao_site.Options, err error)
 	// GetTitleOptions(ctx context.Context, id int64) (res []*dao_site.Options, err error)

@@ -4,10 +4,10 @@
         type List = {
             id: number,
             product: product,
-            specifications: string,
             quantity: number,
+            unit: string,
             unitPrice: string,
-            payAmount: number,
+            totalAmount: number,
             status: number,
             createTime: string,
         }
@@ -16,7 +16,7 @@
             id: number,
             code: string,
             product: product,
-            specifications: string,
+            unit: string,
             quantity: number,
             unitPrice: string,
             totalAmount: number,
@@ -36,7 +36,7 @@
             name: string,
             pic: string,
             game: string,
-            type: string,
+            category: string,
         }
 
         type WechatMiniProgram = {

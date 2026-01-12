@@ -91,7 +91,7 @@
 import { toast } from 'sard-uniapp'
 
 import {  getRechargesStatus, postWeChatMiniProgramRecharge } from "@/api/recharge";
-import { getSiteDictData } from "@/api/site";
+// import { getSiteDictData } from "@/api/site";
 
 
 import NavBar from "@/components/nav-bar.vue";
@@ -133,10 +133,10 @@ const getData = async ()=>{
     uni.showLoading({
         title:"加载中"
     })
-    const res = await getSiteDictData("RECHARGE_MONEY")
-    rechargeMoney.value = res?.list.map((item)=>{
-        return Number(item.value)
-    })
+    // const res = await getSiteDictData("RECHARGE_MONEY")
+    // rechargeMoney.value = res?.list.map((item)=>{
+    //     return Number(item.value)
+    // })
     uni.hideLoading()
 }
 

@@ -119,6 +119,7 @@
     "alova": "^3.3.3",
     "dayjs": "1.11.10",
     "js-cookie": "^3.0.5",
+    "mp-html": "^2.5.2",
     "pinia": "2.0.36",
     "pinia-plugin-persistedstate": "3.2.1",
     "region-data": "^1.2.3",

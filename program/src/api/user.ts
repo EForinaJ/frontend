@@ -18,9 +18,9 @@ export function postAccountEdit(data: IAccountDto) {
 }
 
 
-/**
+// /**
 
- */
-export function wxPhoneBind(data: { code: string }) {
-  return http.post<{phone:string}>('/account/wx/program/phone', data)
-}
+//  */
+// export function wxPhoneBind(data: { code: string }) {
+//   return http.post<{phone:string}>('/account/wx/program/phone', data)
+// }
