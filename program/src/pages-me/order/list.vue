@@ -2,7 +2,7 @@
     <view 
        :style="{minHeight: getWindowHeight() + 'px'}"
        class="page-container">
-        <view class="bar-box w-full px-30rpx fixed box-border  z-33">
+        <view class="bar-box w-full px-30rpx fixed box-border z-33">
             <view :style="{height:getStatusBarHeight()+'px'}" ></view>
             <view 
                 class="flex items-center"
