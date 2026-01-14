@@ -35,36 +35,48 @@
       </view>
       <view :style="{height:40+getStatusBarHeight()+getTitleBarHeight()+getTitleBarHeight()+'px'}"></view>
 
-      <view class="mx-30rpx"> 
-        <view class=" bg-white 
+      <view class="mx-30rpx">
+        <swiper
+         class="h-200rpx"
+          autoplay
+          :interval="3000"
+        >
+          <swiper-item class="slide slide1">1</swiper-item>
+          <swiper-item class="slide slide2">2</swiper-item>
+          <swiper-item class="slide slide3">3</swiper-item>
+        </swiper>
+      </view>
+
+      <!-- <view class="mt-40rpx mx-30rpx">
+          <view class="bg-[#693ff8] rounded-3xl p-20rpx">
+            sd
+          </view>
+      </view> -->
+
+      <view class="mx-30rpx mt-40rpx"> 
+        <view class=" bg-white  px-40rpx pb-60rpx pt-40rpx
         border-[#000] border-6rpx border-solid inner-shadow
          rounded-lg">
-          <view class=" flex items-center border-b-[#000] border-b-6rpx border-b-solid">
-            <view class="bg-black h-100rpx flex items-center px-10rpx">
-              <view class=" tracking-[10rpx] text-white text-xl font-bold">
-                KOOK
+          <view class="flex flex-wrap gap-8">
+            <view class=" pos-relative flex items-center justify-center flex-col">
+              <sar-cool-icon shape="oval" background="#892fe8" color="#fff">
+                <image class="size-60rpx mb-20rpx" src="~@/static/images/sanjz.png"/>
+              </sar-cool-icon>
+              <view class="w-full flex items-center justify-center
+              pos-absolute bottom-[-30rpx] z-3
+              bg-[#000] text-white text-xs px-10rpx py-8rpx font-bold rounded-full">
+                三角洲
               </view>
             </view>
-            <view class="gap-2 flex-1 h-100rpx px-20rpx
-            flex justify-around items-center">
-              <view 
-              v-for="value in 8"
-              class=" font-bold
-              text-2xl text-[#000]">2</view>
-            </view>
           </view>
+        </view>
+      </view>
 
-          <view class="p-20rpx flex items-center gap-3">
-            <sar-avatar size="96rpx" src="https://fastly.jsdelivr.net/npm/@sard/assets/pic1.jpg" />
-            <view class="">
-              <view class="font-bold text-[36rpx]">
-                小可
-              </view>
-              <view class="text-text-secondary font-bold text-sm">
-                在线时间: 12:00~24:00
-              </view>
-            </view>
-          </view>
+      <view class="mx-30rpx mt-40rpx"> 
+        <view class=" bg-white h-200rpx
+        border-[#000] border-6rpx border-solid inner-shadow
+         rounded-lg">
+          
         </view>
       </view>
 
@@ -111,6 +123,25 @@ onLoad(() => {
   background:
     linear-gradient(to bottom, transparent, #fdfdfd 500rpx),
     linear-gradient(to right,  #f5f5f5,#f5f5f5);
+}
+
+.slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 120rpx;
+  font-weight: bold;
+  color: var(--sar-white);
+  border-radius: 16rpx;
+}
+.slide1 {
+  background-color: rgba(var(--sar-red-rgb), 0.3);
+}
+.slide2 {
+  background-color: rgba(var(--sar-green-rgb), 0.3);
+}
+.slide3 {
+  background-color: rgba(var(--sar-blue-rgb), 0.3);
 }
 </style>
   
