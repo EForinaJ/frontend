@@ -1,5 +1,5 @@
 <template>
-  <view class="bg-[#f2f4f3]"
+  <view class="bg-[#fdfdfd]"
   :style="{minHeight: getWindowHeight()-(getTitleBarHeight()+getStatusBarHeight())+ 'px'}">
       <view  class="
       bg-g w-full px-30rpx fixed box-border z-33">
@@ -13,70 +13,183 @@
             PRO玩家
           </view>
         </view>
-        <view class="pos-relative" :style="{height:getTitleBarHeight()+'px'}" >
-          <view class="flex left-0 items-center gap-3 pos-absolute bottom-[-50rpx]">
-            <view class=" flex items-center justify-center
-            h-90rpx w-90rpx bg-[#232323] rounded-lg border-[#fff] border-6rpx border-solid
-            text-3xl text-[#e7e6f9]">欢</view>
-
-            <view class=" flex items-center justify-center
-            h-90rpx w-90rpx bg-[#232323] rounded-lg border-[#fff] border-6rpx border-solid
-            text-3xl text-[#e7e6f9]">迎</view>
-
-            <view class=" flex items-center justify-center
-            h-90rpx w-90rpx bg-[#232323] rounded-lg border-[#fff] border-6rpx border-solid
-            text-3xl text-[#e7e6f9]">光</view>
-
-            <view class=" flex items-center justify-center
-            h-90rpx w-90rpx bg-[#232323] rounded-lg border-[#fff] border-6rpx border-solid
-            text-3xl text-[#e7e6f9]">临</view>
-          </view>
-        </view>
       </view>
-      <view :style="{height:40+getStatusBarHeight()+getTitleBarHeight()+getTitleBarHeight()+'px'}"></view>
+      <view :style="{height:20+getStatusBarHeight()+getTitleBarHeight()+'px'}"></view>
 
       <view class="mx-30rpx">
-        <swiper
-         class="h-200rpx"
-          autoplay
-          :interval="3000"
-        >
-          <swiper-item class="slide slide1">1</swiper-item>
-          <swiper-item class="slide slide2">2</swiper-item>
-          <swiper-item class="slide slide3">3</swiper-item>
-        </swiper>
-      </view>
+        <view class="bg-[#663df3] rounded-lg mt-20rpx">
+          <view class="pos-relative" :style="{height:getTitleBarHeight()+'px'}" >
+            <view class="w-full flex justify-center items-center gap-3 pos-absolute top-[-50rpx]">
+              <view class=" flex items-center justify-center text-shadow
+              h-90rpx w-90rpx bg-[#232323] rounded-lg border-[#fff] border-6rpx border-solid
+              text-3xl text-[#ffff]">欢</view>
 
-      <!-- <view class="mt-40rpx mx-30rpx">
-          <view class="bg-[#693ff8] rounded-3xl p-20rpx">
-            sd
+              <view class=" flex items-center justify-center text-shadow
+              h-90rpx w-90rpx bg-[#232323] rounded-lg border-[#fff] border-6rpx border-solid
+              text-3xl text-[#e7e6f9]">迎</view>
+
+              <view class=" flex items-center justify-center text-shadow
+              h-90rpx w-90rpx bg-[#232323] rounded-lg border-[#fff] border-6rpx border-solid
+              text-3xl text-[#e7e6f9]">光</view>
+
+              <view class=" flex items-center justify-center text-shadow
+              h-90rpx w-90rpx bg-[#232323] rounded-lg border-[#fff] border-6rpx border-solid
+              text-3xl text-[#e7e6f9]">临</view>
+            </view>
           </view>
-      </view> -->
 
-      <view class="mx-30rpx mt-40rpx"> 
-        <view class=" bg-white  px-40rpx pb-60rpx pt-40rpx
-        border-[#000] border-6rpx border-solid inner-shadow
-         rounded-lg">
-          <view class="flex flex-wrap gap-8">
-            <view class=" pos-relative flex items-center justify-center flex-col">
-              <sar-cool-icon shape="oval" background="#892fe8" color="#fff">
-                <image class="size-60rpx mb-20rpx" src="~@/static/images/sanjz.png"/>
-              </sar-cool-icon>
-              <view class="w-full flex items-center justify-center
-              pos-absolute bottom-[-30rpx] z-3
-              bg-[#000] text-white text-xs px-10rpx py-8rpx font-bold rounded-full">
-                三角洲
+          <view class="flex gap-1 px-40rpx pb-40rpx">
+            <view class="rounded-tl-xl rounded-bl-xl pos-relative
+            flex-1 bg-[#1B0660]  clip-l p-20rpx">
+              <view class="stroke-join 
+              text-white tracking-[4rpx]
+              text-[36rpx] font-700" data-content="加入我们">
+                加入我们
+              </view>
+              <view class="w-fit text-shadow-c py-8rpx
+              bg-black rounded-3xl px-30rpx mt-10rpx
+               text-sm text-white font-semibold">
+                GO
+              </view>
+              <view class=" pos-absolute bottom-[10rpx] right-[40rpx]">
+                <image class="w-80rpx h-110rpx" src="~@/static/images/join.png"/>
+              </view>
+            </view>
+            <view class="flex-col flex gap-3
+            flex-1  clip-r">
+              <view class="flex-1 flex items-center justify-center  gap-2
+              bg-[#1B0660] rounded-tr-xl rounded-br-xl">
+                <image class="size-36rpx" src="~@/static/images/kook.png"/>
+                <view class="text-white text-sm">在线客服</view>
+              </view>
+              <view class="flex-1 text-white text-sm font-semibold
+              flex items-center justify-center
+              bg-[#1B0660] rounded-tr-xl rounded-br-xl">
+                下单须知
               </view>
             </view>
           </view>
         </view>
       </view>
 
-      <view class="mx-30rpx mt-40rpx"> 
-        <view class=" bg-white h-200rpx
-        border-[#000] border-6rpx border-solid inner-shadow
-         rounded-lg">
-          
+
+      <!-- <view class="mx-30rpx mt-40rpx">
+        <view class="text-xl font-bold pos-relative
+        w-fit 
+        after:content-[''] after:w-full 
+        after:bg-gradient-to-r after:from-[#f03740] after:to-transparent
+        after:inline-block
+        after:rounded-lg after:h-10rpx 
+        after:absolute after:bottom-4rpx after:left-0
+        ">
+           热门商品
+        </view>
+        <view class="shadow-2xl 
+        bg-red-3 rounded-3xl mt-20rpx">
+          <view class="flex justify-between items-center px-30rpx py-16rpx">
+            <view class="flex items-center gap-2">
+              <view class="flex items-center justify-center">
+                <image class="size-40rpx" src="~@/static/images/sanjz.png"/>
+              </view>
+              <view class="font-bold text-[36rpx] text-[#ffff]">
+                三角洲行动
+              </view>
+            </view>
+            <view class="flex gap-2 items-center bg-white py-8rpx px-12rpx rounded-2xl">
+              <text class="text-xs">全部</text>
+              <view class="size-28rpx bg-black rounded-full flex items-center justify-center">
+                <view class="i-carbon:chevron-right text-white text-xs" />
+              </view>
+            </view>
+          </view>
+          <view class="bg-white rounded-3xl p-40rpx">
+            <sar-scroll-list
+             scrollbar-bg="rgba(var(--sar-danger-rgb), 0.2)"
+            thumb-bg="var(--sar-danger)"
+            >
+                <view class="flex gap-3">
+                  <view v-for="item in 8" class="
+                  shadow-2xl
+                  w-260rpx rounded-xl bg-black">
+                    <sar-image class="rounded-xl"
+                      src="https://fastly.jsdelivr.net/npm/@sard/assets/images/cat1.jpg"
+                      width="100%"
+                      height="180rpx"
+                    />
+                    <view class="px-16rpx py-16rpx">
+                      <text class="text-sm line-clamp-1 leading-none overflow-hidden
+                    text-white ">保底300w双子星猛攻单</text>
+                    </view>
+                  </view>
+                </view>
+            </sar-scroll-list>
+          </view>
+        </view>
+      </view> -->
+
+      <view class="mx-30rpx mt-40rpx">
+        <view class="text-xl font-bold pos-relative
+        w-fit 
+        after:content-[''] after:w-full 
+        after:bg-gradient-to-r after:from-[#663df3] after:to-transparent
+        after:inline-block
+        after:rounded-lg after:h-10rpx 
+        after:absolute after:bottom-4rpx after:left-0
+        ">
+          人气服务
+        </view>
+        <view class="
+        bg-[#663df3] rounded-lg p-20rpx mt-20rpx">
+          <view class="rounded-lg">
+            <view class="bg-white flex
+             rounded-tl-3xl h-80rpx
+            ">
+              <view class="bg-[#663df3]">
+                <view class="w-fit pl-30rpx pr-70rpx flex items-center justify-center  gap-2
+                bg-white rounded-tl-3xl rounded-tr-3xl h-full">
+                  <view class="rounded-full px-8rpx flex items-center justify-center">
+                    <image class="size-40rpx" src="~@/static/images/sanjz.png"/>
+                  </view>
+                  <view class="font-bold text-[36rpx]">
+                    三角洲行动
+                  </view>
+                </view>
+              </view>
+
+              <view class="flex-1
+              bg-[#663df3] h-full flex justify-end items-center
+              rounded-bl-3xl">
+                <view class="flex gap-2 items-center bg-white py-6rpx px-16rpx
+                 rounded-t-2xl rounded-br-2xl">
+                    <text class="text-xs">全部</text>
+                    <view class="size-28rpx bg-black rounded-full flex items-center justify-center">
+                      <view class="i-carbon:chevron-right text-white text-xs" />
+                    </view>
+                </view>
+              </view>
+            </view>
+            <view class="bg-white p-40rpx
+            rounded-tr-3xl rounded-bl-3xl rounded-br-3xl">
+              <sar-scroll-list
+                scrollbar-bg="rgba(var(--sar-danger-rgb), 0.2)"
+                thumb-bg="var(--sar-danger)"
+              >
+                  <view class="flex gap-3">
+                    <view v-for="item in 8" class="w-260rpx rounded-xl bg-black">
+                      <sar-image class="rounded-xl"
+                        src="https://fastly.jsdelivr.net/npm/@sard/assets/images/cat1.jpg"
+                        width="100%"
+                        height="180rpx"
+                      />
+                      <view class="px-16rpx py-16rpx">
+                        <text class="text-sm line-clamp-1 leading-none overflow-hidden
+                      text-white ">保底300w双子星猛攻单</text>
+                      </view>
+                    </view>
+                  </view>
+              </sar-scroll-list>
+            </view>
+          </view>
         </view>
       </view>
 
@@ -99,6 +212,21 @@ definePage({
   },
 })
 
+
+const rows = ref(
+  Array(16)
+    .fill(0)
+    .reduce(
+      (rows, _, i) => {
+        rows[i % 2].push({
+          text: '文字' + (i + 1),
+          icon: 'image',
+        })
+        return rows
+      },
+      [[], []],
+    ),
+)
 const description = ref(
   'unibest 是一个集成了多种工具和技术的 uniapp 开发模板，由 uniapp + Vue3 + Ts + Vite5 + UnoCss + VSCode 构建，模板具有代码提示、自动格式化、统一配置、代码片段等功能，并内置了许多常用的基本组件和基本功能，让你编写 uniapp 拥有 best 体验。',
 )
@@ -111,19 +239,38 @@ onLoad(() => {
 
 
 <style lang="scss" scoped>
-.inner-shadow {
-  box-shadow: 10rpx 10rpx 0rpx rgba(0, 0, 0, 1); /* 内阴影 */
+.text-shadow-c{
+  text-shadow: #f03740 -1px -3px, #2addfd 3px 0px;
+}
+.stroke-join {
+  position: relative;
+  -webkit-text-stroke: 4rpx #663df3;
+}
+.stroke-join::after {
+  content: attr(data-content);
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-text-stroke: 0;
+}
+
+
+.clip-r {
+  clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%);
+  
+}
+.clip-l {
+  clip-path: polygon(0% 0%, 100% 0%, 90% 100%, 0% 100%);
 }
 
 .bg-g {
-  background:
-    linear-gradient(to right,  #693ff8 40%,#693ff8);
+  // background:
+  // linear-gradient(to bottom, transparent, #fdfdfd 400rpx),
+  //   linear-gradient(to right,  #ffdee9c4 40%,#b5fffc8f);
+  background: 
+  linear-gradient(to right,  #663df3,#663df3);
 }
-.box-g {
-  background:
-    linear-gradient(to bottom, transparent, #fdfdfd 500rpx),
-    linear-gradient(to right,  #f5f5f5,#f5f5f5);
-}
+
 
 .slide {
   display: flex;
@@ -141,6 +288,7 @@ onLoad(() => {
   background-color: rgba(var(--sar-green-rgb), 0.3);
 }
 .slide3 {
+  
   background-color: rgba(var(--sar-blue-rgb), 0.3);
 }
 </style>

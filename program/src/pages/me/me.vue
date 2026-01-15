@@ -189,9 +189,26 @@ const handelPush = (url:string) => {
 .page-x {
   background:
     linear-gradient(to bottom, transparent, #f5f5f5 400rpx),
-    linear-gradient(to right,  #CE9FFC,#CE9FFC);
+    linear-gradient(to right,  #bb313e25,
+       #bb313e25,
+       #d7222925,
+       #dd4a1625,
+       #e4761525,
+       #f5c50025,
+       #f0e92725,
+       #b1ce2425,
+       #48a93525,
+       #03944525,
+       #157c4f25,
+       #176a5825,
+       #1b556325,
+       #1d386f25,
+       #1d386f25,
+       #20277825,
+       #52266325,
+       #8a244b25);
 }
 .balance-bg {
-  background: linear-gradient(to right, #CE9FFC ,#caaff3 10%,#f5f5f5 );
+  background: linear-gradient(to right, #693FF8 ,#caaff3,#f5f5f5 );
 }
 </style>
