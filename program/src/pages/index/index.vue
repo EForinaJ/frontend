@@ -1,5 +1,5 @@
 <template>
-  <view class="bg-primary"
+  <view class="bg-#f5f5f5"
   :style="{minHeight: getWindowHeight()-(getTitleBarHeight()+getStatusBarHeight())+ 'px'}">
       <view  class="
       bg-primary w-full px-30rpx fixed box-border z-33">
@@ -17,7 +17,7 @@
       <view :style="{height:40+getStatusBarHeight()+getTitleBarHeight()+'px'}"></view>
 
       <view class="mx-30rpx">
-        <view class="bg-[#3d2f51] rounded-lg mt-20rpx">
+        <view class="pos-relative h-400rpx bg-primary rounded-lg mt-20rpx">
           <view class="pos-relative" :style="{height:getTitleBarHeight()+'px'}" >
             <view class="w-full flex justify-center items-center gap-3 pos-absolute top-[-50rpx]">
               <view class=" flex items-center justify-center text-shadow
@@ -37,10 +37,18 @@
               text-3xl text-[#e7e6f9]">临</view>
             </view>
           </view>
+  
+          <view class="ribbon-2">
+            <view class="flex-1 flex items-center justify-center  gap-2
+              bg-secondary rounded-tr-xl rounded-br-xl">
+                <image class="size-48rpx" src="~@/static/images/kook.png"/>
+                <view class="text-white text-[36rpx]">KOOK频道: 265348521</view>
+              </view>
+          </view>
 
           <view class="flex gap-1 px-40rpx pb-40rpx">
             <view class="rounded-tl-xl rounded-bl-xl pos-relative
-            flex-1 bg-[#1D1626]  clip-l p-20rpx">
+            flex-1 bg-secondary  clip-l p-20rpx">
               <view class="stroke-join 
               text-white tracking-[4rpx]
               text-[36rpx] font-700" data-content="加入我们">
@@ -57,21 +65,20 @@
             </view>
             <view class="flex-col flex gap-3
             flex-1  clip-r">
-              <view class="flex-1 flex items-center justify-center  gap-2
-              bg-[#1D1626] rounded-tr-xl rounded-br-xl">
-                <image class="size-36rpx" src="~@/static/images/kook.png"/>
-                <view class="text-white text-sm">在线客服</view>
+            <view class="flex-1 text-white text-sm font-semibold
+              flex items-center justify-center
+              bg-secondary rounded-tr-xl rounded-br-xl">
+                在线客服
               </view>
               <view class="flex-1 text-white text-sm font-semibold
               flex items-center justify-center
-              bg-[#1D1626] rounded-tr-xl rounded-br-xl">
-                下单须知
+              bg-secondary rounded-tr-xl rounded-br-xl">
+                预约须知
               </view>
             </view>
           </view>
         </view>
       </view>
-
 
       <view class="mx-30rpx mt-40rpx">
         <view class="shadow-2xl 
@@ -85,45 +92,45 @@
                 游戏领域
               </view>
             </view>
-            <!-- <view class="flex gap-2 items-center bg-white py-8rpx px-12rpx rounded-2xl">
-              <text class="text-xs">全部</text>
-              <view class="size-28rpx bg-black rounded-full flex items-center justify-center">
-                <view class="i-carbon:chevron-right text-white text-xs" />
-              </view>
-            </view> -->
           </view>
-          <view class="bg-tertiary rounded-3xl p-40rpx">
-            <sar-row :gap="30">
-              <sar-col v-for="value in 8" :span="4">
-                <view class="px-16rpx bg-primary py-20rpx rounded-lg mb-30rpx
-                flex-col flex items-center justify-center">
-                  <image class="size-60rpx" src="~@/static/images/sanjz.png"/>
-                  <view class="text-xs mt-16rpx text-white">三角洲行动</view>
+          <view class="bg-primary rounded-3xl p-40rpx">
+            <sar-scroll-list
+              scrollbar-bg="rgba(var(--sar-danger-rgb), 0.2)"
+              thumb-bg="var(--sar-danger)"
+            >
+                <view class="flex gap-3">
+                  <view 
+                  v-for="value in 8"
+                  class=" w-160rpx
+                  px-16rpx bg-tertiary py-20rpx rounded-lg mb-30rpx
+                  flex-col flex items-center justify-center">
+                    <image class="size-60rpx" src="~@/static/images/sanjz.png"/>
+                    <view class="text-xs mt-16rpx text-white">三角洲行动</view>
+                  </view>
                 </view>
-              </sar-col>
-            </sar-row>
+            </sar-scroll-list>
           </view>
         </view>
       </view>
 
       <view class="mx-30rpx mt-40rpx">
         <view class="text-xl font-bold pos-relative
-        w-fit text-white
+        w-fit 
         after:content-[''] after:w-full 
-        after:bg-gradient-to-r after:from-tertiary after:to-transparent
+        after:bg-gradient-to-r after:from-[#693FF8] after:to-transparent
         after:inline-block
         after:rounded-lg after:h-10rpx 
         after:absolute after:bottom-4rpx after:left-0
         ">
-          人气服务
+          热门预约
         </view>
         <view class="
-        bg-secondary rounded-lg p-20rpx mt-20rpx">
+        bg-primary rounded-lg p-20rpx mt-20rpx">
           <view class="rounded-lg">
             <view class="bg-white flex
              rounded-tl-3xl h-80rpx
             ">
-              <view class="bg-secondary">
+              <view class="bg-primary">
                 <view class="w-fit pl-30rpx pr-70rpx flex items-center justify-center  gap-2
                 bg-white rounded-tl-3xl rounded-tr-3xl h-full">
                   <view class="rounded-full px-8rpx flex items-center justify-center">
@@ -136,7 +143,7 @@
               </view>
 
               <view class="flex-1
-              bg-secondary h-full flex justify-end items-center
+              bg-primary h-full flex justify-end items-center
               rounded-bl-3xl">
                 <view class="flex gap-2 items-center bg-white py-6rpx px-16rpx
                  rounded-t-2xl rounded-br-2xl">
@@ -172,7 +179,7 @@
         </view>
       </view>
       
-      <view :style="{height:40+getStatusBarHeight()+getTitleBarHeight()+'px'}"></view>
+      <view :style="{height:getTitleBarHeight()+'px'}"></view>
   </view>
 </template>
 
@@ -219,10 +226,42 @@ onLoad(() => {
 
 
 <style lang="scss" scoped>
-.grid{
-  background: #663df3;
-}
+.ribbon-2 {
+  position: absolute;
+  left: -20rpx;
+  bottom: 40rpx;
+  width: calc(100% + 40rpx);
+  height: 100rpx;
+  background-color: #3D2F51;
 
+  /* 内容居中 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &::before, &::after {
+    content: '';
+    position: absolute;
+  }
+
+  &::before {
+    left: 0;
+    height: 0;
+    width: 0;
+    border-top: 20rpx solid #3D2F51;
+    border-left: 20rpx solid transparent;
+    bottom: -20rpx;
+  }
+
+  &::after {
+    right: 0;
+    bottom: -20rpx;
+    height: 0;
+    width: 0;
+    border-top: 20rpx solid #3D2F51;
+    border-right: 20rpx solid transparent;
+  }
+}
 .text-shadow-c{
   text-shadow: #f03740 -1px -3px, #2addfd 3px 0px;
 }
@@ -238,7 +277,6 @@ onLoad(() => {
   -webkit-text-stroke: 0;
 }
 
-
 .clip-r {
   clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%);
   
@@ -247,33 +285,6 @@ onLoad(() => {
   clip-path: polygon(0% 0%, 100% 0%, 90% 100%, 0% 100%);
 }
 
-.bg-g {
-  // background:
-  // linear-gradient(to bottom, transparent, #fdfdfd 400rpx),
-  //   linear-gradient(to right,  #ffdee9c4 40%,#b5fffc8f);
-  background: 
-  linear-gradient(to right,  #663df3,#663df3);
-}
 
-
-.slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 120rpx;
-  font-weight: bold;
-  color: var(--sar-white);
-  border-radius: 16rpx;
-}
-.slide1 {
-  background-color: rgba(var(--sar-red-rgb), 0.3);
-}
-.slide2 {
-  background-color: rgba(var(--sar-green-rgb), 0.3);
-}
-.slide3 {
-  
-  background-color: rgba(var(--sar-blue-rgb), 0.3);
-}
 </style>
   
