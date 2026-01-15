@@ -89,6 +89,9 @@ export default defineConfig({
       inProgress: '#007AFF',
       completed: '#34C759',
       refund: '#FF3B30',
+      primary: '#1D1626',
+      secondary: '#3d2f51',
+      tertiary: '#564171',
     },
     fontSize: {
       /** 提供更小号的字体，用法如：text-2xs */

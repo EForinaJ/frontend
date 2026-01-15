@@ -1,8 +1,8 @@
 <template>
-  <view class="bg-[#fdfdfd]"
+  <view class="bg-primary"
   :style="{minHeight: getWindowHeight()-(getTitleBarHeight()+getStatusBarHeight())+ 'px'}">
       <view  class="
-      bg-g w-full px-30rpx fixed box-border z-33">
+      bg-primary w-full px-30rpx fixed box-border z-33">
         <view :style="{height:getStatusBarHeight()+'px'}" ></view>
         <view :style="{height:getTitleBarHeight()+'px'}" >
           <!-- <image class="w-[180rpx] h-full" src="~@/static/images/xl.png"/> -->
@@ -14,10 +14,10 @@
           </view>
         </view>
       </view>
-      <view :style="{height:20+getStatusBarHeight()+getTitleBarHeight()+'px'}"></view>
+      <view :style="{height:40+getStatusBarHeight()+getTitleBarHeight()+'px'}"></view>
 
       <view class="mx-30rpx">
-        <view class="bg-[#663df3] rounded-lg mt-20rpx">
+        <view class="bg-[#3d2f51] rounded-lg mt-20rpx">
           <view class="pos-relative" :style="{height:getTitleBarHeight()+'px'}" >
             <view class="w-full flex justify-center items-center gap-3 pos-absolute top-[-50rpx]">
               <view class=" flex items-center justify-center text-shadow
@@ -40,7 +40,7 @@
 
           <view class="flex gap-1 px-40rpx pb-40rpx">
             <view class="rounded-tl-xl rounded-bl-xl pos-relative
-            flex-1 bg-[#1B0660]  clip-l p-20rpx">
+            flex-1 bg-[#1D1626]  clip-l p-20rpx">
               <view class="stroke-join 
               text-white tracking-[4rpx]
               text-[36rpx] font-700" data-content="加入我们">
@@ -58,13 +58,13 @@
             <view class="flex-col flex gap-3
             flex-1  clip-r">
               <view class="flex-1 flex items-center justify-center  gap-2
-              bg-[#1B0660] rounded-tr-xl rounded-br-xl">
+              bg-[#1D1626] rounded-tr-xl rounded-br-xl">
                 <image class="size-36rpx" src="~@/static/images/kook.png"/>
                 <view class="text-white text-sm">在线客服</view>
               </view>
               <view class="flex-1 text-white text-sm font-semibold
               flex items-center justify-center
-              bg-[#1B0660] rounded-tr-xl rounded-br-xl">
+              bg-[#1D1626] rounded-tr-xl rounded-br-xl">
                 下单须知
               </view>
             </view>
@@ -73,65 +73,44 @@
       </view>
 
 
-      <!-- <view class="mx-30rpx mt-40rpx">
-        <view class="text-xl font-bold pos-relative
-        w-fit 
-        after:content-[''] after:w-full 
-        after:bg-gradient-to-r after:from-[#f03740] after:to-transparent
-        after:inline-block
-        after:rounded-lg after:h-10rpx 
-        after:absolute after:bottom-4rpx after:left-0
-        ">
-           热门商品
-        </view>
+      <view class="mx-30rpx mt-40rpx">
         <view class="shadow-2xl 
-        bg-red-3 rounded-3xl mt-20rpx">
+        bg-secondary rounded-3xl mt-20rpx">
           <view class="flex justify-between items-center px-30rpx py-16rpx">
             <view class="flex items-center gap-2">
               <view class="flex items-center justify-center">
-                <image class="size-40rpx" src="~@/static/images/sanjz.png"/>
+                <image class="size-40rpx" src="~@/static/images/game.png"/>
               </view>
               <view class="font-bold text-[36rpx] text-[#ffff]">
-                三角洲行动
+                游戏领域
               </view>
             </view>
-            <view class="flex gap-2 items-center bg-white py-8rpx px-12rpx rounded-2xl">
+            <!-- <view class="flex gap-2 items-center bg-white py-8rpx px-12rpx rounded-2xl">
               <text class="text-xs">全部</text>
               <view class="size-28rpx bg-black rounded-full flex items-center justify-center">
                 <view class="i-carbon:chevron-right text-white text-xs" />
               </view>
-            </view>
+            </view> -->
           </view>
-          <view class="bg-white rounded-3xl p-40rpx">
-            <sar-scroll-list
-             scrollbar-bg="rgba(var(--sar-danger-rgb), 0.2)"
-            thumb-bg="var(--sar-danger)"
-            >
-                <view class="flex gap-3">
-                  <view v-for="item in 8" class="
-                  shadow-2xl
-                  w-260rpx rounded-xl bg-black">
-                    <sar-image class="rounded-xl"
-                      src="https://fastly.jsdelivr.net/npm/@sard/assets/images/cat1.jpg"
-                      width="100%"
-                      height="180rpx"
-                    />
-                    <view class="px-16rpx py-16rpx">
-                      <text class="text-sm line-clamp-1 leading-none overflow-hidden
-                    text-white ">保底300w双子星猛攻单</text>
-                    </view>
-                  </view>
+          <view class="bg-tertiary rounded-3xl p-40rpx">
+            <sar-row :gap="30">
+              <sar-col v-for="value in 8" :span="4">
+                <view class="px-16rpx bg-primary py-20rpx rounded-lg mb-30rpx
+                flex-col flex items-center justify-center">
+                  <image class="size-60rpx" src="~@/static/images/sanjz.png"/>
+                  <view class="text-xs mt-16rpx text-white">三角洲行动</view>
                 </view>
-            </sar-scroll-list>
+              </sar-col>
+            </sar-row>
           </view>
         </view>
-      </view> -->
+      </view>
 
       <view class="mx-30rpx mt-40rpx">
         <view class="text-xl font-bold pos-relative
-        w-fit 
+        w-fit text-white
         after:content-[''] after:w-full 
-        after:bg-gradient-to-r after:from-[#663df3] after:to-transparent
+        after:bg-gradient-to-r after:from-tertiary after:to-transparent
         after:inline-block
         after:rounded-lg after:h-10rpx 
         after:absolute after:bottom-4rpx after:left-0
@@ -139,12 +118,12 @@
           人气服务
         </view>
         <view class="
-        bg-[#663df3] rounded-lg p-20rpx mt-20rpx">
+        bg-secondary rounded-lg p-20rpx mt-20rpx">
           <view class="rounded-lg">
             <view class="bg-white flex
              rounded-tl-3xl h-80rpx
             ">
-              <view class="bg-[#663df3]">
+              <view class="bg-secondary">
                 <view class="w-fit pl-30rpx pr-70rpx flex items-center justify-center  gap-2
                 bg-white rounded-tl-3xl rounded-tr-3xl h-full">
                   <view class="rounded-full px-8rpx flex items-center justify-center">
@@ -157,7 +136,7 @@
               </view>
 
               <view class="flex-1
-              bg-[#663df3] h-full flex justify-end items-center
+              bg-secondary h-full flex justify-end items-center
               rounded-bl-3xl">
                 <view class="flex gap-2 items-center bg-white py-6rpx px-16rpx
                  rounded-t-2xl rounded-br-2xl">
@@ -192,7 +171,8 @@
           </view>
         </view>
       </view>
-
+      
+      <view :style="{height:40+getStatusBarHeight()+getTitleBarHeight()+'px'}"></view>
   </view>
 </template>
 
@@ -239,6 +219,10 @@ onLoad(() => {
 
 
 <style lang="scss" scoped>
+.grid{
+  background: #663df3;
+}
+
 .text-shadow-c{
   text-shadow: #f03740 -1px -3px, #2addfd 3px 0px;
 }
