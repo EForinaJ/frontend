@@ -21,19 +21,19 @@
           <view class="pos-relative" :style="{height:getTitleBarHeight()+'px'}" >
             <view class="w-full flex justify-center items-center gap-3 pos-absolute top-[-50rpx]">
               <view class=" flex items-center justify-center text-shadow
-              h-90rpx w-90rpx bg-[#232323] rounded-lg border-[#fff] border-6rpx border-solid
+              h-90rpx w-90rpx bg-primary rounded-lg border-[#fff] border-6rpx border-solid
               text-3xl text-[#ffff]">欢</view>
 
               <view class=" flex items-center justify-center text-shadow
-              h-90rpx w-90rpx bg-[#232323] rounded-lg border-[#fff] border-6rpx border-solid
+              h-90rpx w-90rpx bg-primary rounded-lg border-[#fff] border-6rpx border-solid
               text-3xl text-[#e7e6f9]">迎</view>
 
               <view class=" flex items-center justify-center text-shadow
-              h-90rpx w-90rpx bg-[#232323] rounded-lg border-[#fff] border-6rpx border-solid
+              h-90rpx w-90rpx bg-primary rounded-lg border-[#fff] border-6rpx border-solid
               text-3xl text-[#e7e6f9]">光</view>
 
               <view class=" flex items-center justify-center text-shadow
-              h-90rpx w-90rpx bg-[#232323] rounded-lg border-[#fff] border-6rpx border-solid
+              h-90rpx w-90rpx bg-primary rounded-lg border-[#fff] border-6rpx border-solid
               text-3xl text-[#e7e6f9]">临</view>
             </view>
           </view>

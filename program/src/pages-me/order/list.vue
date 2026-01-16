@@ -1,8 +1,8 @@
 <template>
     <view 
        :style="{minHeight: getWindowHeight() + 'px'}"
-       class="page-container">
-        <view class="bar-box w-full px-30rpx fixed box-border z-33">
+       class="bg-#f5f5f5">
+        <view class="bg-white w-full px-30rpx fixed box-border z-33">
             <view :style="{height:getStatusBarHeight()+'px'}" ></view>
             <view 
                 class="flex items-center"
