@@ -1,10 +1,11 @@
 <template>
 <view  
-:style="{minHeight: getWindowHeight()-(getTitleBarHeight()+getStatusBarHeight())+ 'px'}"
-class="bg-[#f5f4f9]" >
-    
-
-    <view class="pt-40rpx mx-30rpx">
+    :style="{minHeight: getWindowHeight() + 'px'}"
+    class="bg-[#f5f4f9]">
+    <Bar arrow
+     title="个人信息"
+    />
+    <view class="mt-40rpx mx-30rpx">
     <sar-list hide-border card>
         <sar-list-item arrow @click="handleAvatar">
         <template #title>
@@ -147,18 +148,20 @@ class="bg-[#f5f4f9]" >
 import { storeToRefs } from 'pinia'
 import { useAccountStore } from '@/store'
 import { useTokenStore } from '@/store/token'
-import { getStatusBarHeight, getTitleBarHeight, getWindowHeight } from '@/utils/systemInfo';
+import { getWindowHeight } from '@/utils/systemInfo';
 import { IAccountDto } from '@/api/types/account';
 import { postAccountEdit } from '@/api/user';
 import useBoolean from '@/hooks/boolean';
 import { SexType } from '@/enum/type';
 import { ActionSheetItem, formatDate } from 'sard-uniapp';
+import Bar from '@/components/bar.vue';
 
 
 definePage({
     needLogin: true,
     style: {
-    navigationBarTitleText: '个人信息',
+        navigationBarTitleText: '个人信息',
+        navigationStyle: 'custom'
     },
 })
 

@@ -6,6 +6,14 @@ import (
 	"github.com/gogf/gf/v2/frame/g"
 )
 
+// ---------------------- 首页
+type GetHomeReq struct {
+	g.Meta `path:"/site/home" method:"get" tags:"站点" summary:"首页"`
+}
+type GetHomeRes struct {
+	*dao_site.Home
+}
+
 // ---------------------- 基础配置
 type GetSiteReq struct {
 	g.Meta `path:"/site" method:"get" tags:"站点" summary:"获取系统站点信息"`

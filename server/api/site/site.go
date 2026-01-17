@@ -11,6 +11,7 @@ import (
 )
 
 type ISiteV1 interface {
+	GetHome(ctx context.Context, req *v1.GetHomeReq) (res *v1.GetHomeRes, err error)
 	GetSite(ctx context.Context, req *v1.GetSiteReq) (res *v1.GetSiteRes, err error)
 	GetAboutUs(ctx context.Context, req *v1.GetAboutUsReq) (res *v1.GetAboutUsRes, err error)
 	GetPrivacyPolicy(ctx context.Context, req *v1.GetPrivacyPolicyReq) (res *v1.GetPrivacyPolicyRes, err error)

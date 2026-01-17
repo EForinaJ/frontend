@@ -20,48 +20,50 @@ type SysProductDao struct {
 
 // SysProductColumns defines and stores column names for the table sys_product.
 type SysProductColumns struct {
-	Id            string //
-	Pic           string //
-	Code          string //
-	Type          string // 1护航，2代肝
-	CategoryId    string //
-	GameId        string //
-	Name          string //
-	Description   string //
-	Content       string //
-	WitkeyCount   string //
-	Price         string //
-	Unit          string //
-	SalesCount    string //
-	Rate          string //
-	PurchaseLimit string //
-	SkuType       string //
-	Status        string // 状态：1-禁用，2-启用
-	CreateTime    string //
-	UpdateTime    string //
+	Id                  string //
+	Pic                 string //
+	Code                string //
+	Type                string // 1护航，2代肝
+	CategoryId          string //
+	GameId              string //
+	Name                string //
+	Description         string //
+	Content             string //
+	WitkeyCount         string //
+	Price               string //
+	Unit                string //
+	SalesCount          string //
+	Rate                string //
+	PurchaseLimit       string //
+	SkuType             string //
+	WxMiniProgramQrCode string //
+	Status              string // 状态：1-禁用，2-启用
+	CreateTime          string //
+	UpdateTime          string //
 }
 
 // sysProductColumns holds the columns for the table sys_product.
 var sysProductColumns = SysProductColumns{
-	Id:            "id",
-	Pic:           "pic",
-	Code:          "code",
-	Type:          "type",
-	CategoryId:    "category_id",
-	GameId:        "game_id",
-	Name:          "name",
-	Description:   "description",
-	Content:       "content",
-	WitkeyCount:   "witkey_count",
-	Price:         "price",
-	Unit:          "unit",
-	SalesCount:    "sales_count",
-	Rate:          "rate",
-	PurchaseLimit: "purchase_limit",
-	SkuType:       "sku_type",
-	Status:        "status",
-	CreateTime:    "create_time",
-	UpdateTime:    "update_time",
+	Id:                  "id",
+	Pic:                 "pic",
+	Code:                "code",
+	Type:                "type",
+	CategoryId:          "category_id",
+	GameId:              "game_id",
+	Name:                "name",
+	Description:         "description",
+	Content:             "content",
+	WitkeyCount:         "witkey_count",
+	Price:               "price",
+	Unit:                "unit",
+	SalesCount:          "sales_count",
+	Rate:                "rate",
+	PurchaseLimit:       "purchase_limit",
+	SkuType:             "sku_type",
+	WxMiniProgramQrCode: "wx_mini_program_qr_code",
+	Status:              "status",
+	CreateTime:          "create_time",
+	UpdateTime:          "update_time",
 }
 
 // NewSysProductDao creates and returns a new DAO object for table data access.

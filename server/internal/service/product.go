@@ -10,6 +10,7 @@ import (
 type IProduct interface {
 	GetList(ctx context.Context, req *dto_product.Query) (total int, res []*dao_product.List, err error)
 	GetDetail(ctx context.Context, id int64) (res *dao_product.Detail, err error)
+	GetWxMiniProgramCode(ctx context.Context, id int64) (res string, err error)
 }
 
 // 定义接口变量

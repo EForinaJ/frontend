@@ -221,6 +221,23 @@ onLoad(async (options)=>{
     await getList()
     fetchListSetFalse()
 })
+
+onShareAppMessage((option)=>{
+    return{
+      title: site.title,
+      path: `/pages/product/list?gameId=${query.gameId}`
+    }
+  }
+)
+
+// #ifdef MP-WEIXIN
+onShareTimeline(()=>{
+  return {
+    title: site.title,
+    path: `/pages/product/list?gameId=${query.gameId}`
+  }
+})
+// #endif
 </script>
 
 <style lang="scss" scoped>

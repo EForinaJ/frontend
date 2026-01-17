@@ -4,6 +4,10 @@ export function getSite() {
   return http.get<Site.Dao.Info>('/site')
 }
 
+export function getSiteHome() {
+  return http.get<Site.Dao.Home>('/site/home')
+}
+
 export function getSiteAboutUs() {
   return http.get<Site.Dao.Protocol>('/site/about/us')
 }

@@ -14,3 +14,7 @@ export function getProductList(data:Product.Dto.Query) {
 export function getProductDetail(data:{id:number}) {
   return http.get<Product.Dao.Detail>('/product/detail',data)
 }
+
+export function getProductWxMiniProgramCode(data:{id:number}) {
+  return http.get<{qrCode:string}>('/product/wx/mini/program/code',data)
+}

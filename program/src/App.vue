@@ -5,13 +5,13 @@ import { useAccountStore, useTokenStore } from './store';
 import { useSiteStore } from './store/site';
 
 onLaunch(async (options) => {
-  uni.loadFontFace({
-  family: 'HarmonyOS_Sans_SC_Regular',
-    source: 'url("/static/fonts/HarmonyOS_Sans_SC_Regular.ttf")',
-    success() {
-        console.log('success')
-    }
-  })
+  // uni.loadFontFace({
+  // family: 'HarmonyOS_Sans_SC_Regular',
+  //   source: 'url("/static/fonts/HarmonyOS_Sans_SC_Regular.ttf")',
+  //   success() {
+  //       console.log('success')
+  //   }
+  // })
 
   const siteStore = useSiteStore()
   await siteStore.fetchSiteInfo()

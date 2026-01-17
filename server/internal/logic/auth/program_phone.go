@@ -49,26 +49,41 @@ func (s *sAuth) weiXinPhone(ctx context.Context, req *dto_auth.ProgramPhoneLogin
 
 	appid := json.Get("appId")
 	secret := json.Get("secret")
-	// 请求微信access_token
-	tokenUrl := fmt.Sprintf(
-		"https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=%s&secret=%s",
-		appid, secret,
-	)
-	// 创建一个HTTP客户端请求对象
-	resp, err := g.Client().Get(ctx, tokenUrl)
+
+	wxAccounttoken := ""
+	wxAccountTokenRdObj, err := g.Redis().Get(ctx, "wx_program_access_token")
 	if err != nil {
-		return nil, utils_error.Err(response.EXCEPTION, response.CodeMsg(response.EXCEPTION))
+		return nil, utils_error.Err(response.CACHE_READ_ERROR, response.CodeMsg(response.CACHE_READ_ERROR))
 	}
-	defer resp.Close()
-	result, err := gjson.DecodeToJson(resp.ReadAllString())
+	if !wxAccountTokenRdObj.IsEmpty() {
+		wxAccounttoken = wxAccountTokenRdObj.String()
+	} else {
+		// 请求微信access_token
+		tokenUrl := fmt.Sprintf(
+			"https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=%s&secret=%s",
+			appid, secret,
+		)
+		// 创建一个HTTP客户端请求对象
+		resp, err := g.Client().Get(ctx, tokenUrl)
+		if err != nil {
+			return nil, utils_error.Err(response.EXCEPTION, response.CodeMsg(response.EXCEPTION))
+		}
+		defer resp.Close()
+		result, err := gjson.DecodeToJson(resp.ReadAllString())
+		if err != nil {
+			return nil, utils_error.Err(response.EXCEPTION, response.CodeMsg(response.EXCEPTION))
+		}
+		wxAccounttoken = result.Get("access_token").String()
+	}
+	err = g.Redis().SetEX(ctx, "wx_program_access_token", wxAccounttoken, 7000)
 	if err != nil {
-		return nil, utils_error.Err(response.EXCEPTION, response.CodeMsg(response.EXCEPTION))
+		return nil, utils_error.Err(response.CACHE_SAVE_ERROR, response.CodeMsg(response.CACHE_SAVE_ERROR))
 	}
 
 	// 请求微信phone
 	phoneUrl := fmt.Sprintf(
 		"https://api.weixin.qq.com/wxa/business/getuserphonenumber?access_token=%s",
-		result.Get("access_token"),
+		wxAccounttoken,
 	)
 	phoneCode := fmt.Sprintf(
 		`{"code":"%s"}`,
@@ -94,7 +109,7 @@ func (s *sAuth) weiXinPhone(ctx context.Context, req *dto_auth.ProgramPhoneLogin
 	if err != nil {
 		return nil, utils_error.Err(response.EXCEPTION, response.CodeMsg(response.EXCEPTION))
 	}
-	defer resp.Close()
+	defer codeResp.Close()
 	codeResult, err := gjson.DecodeToJson(codeResp.ReadAllString())
 	if err != nil {
 		return nil, utils_error.Err(response.EXCEPTION, response.CodeMsg(response.EXCEPTION))

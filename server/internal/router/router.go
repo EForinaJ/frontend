@@ -23,6 +23,7 @@ func LoadRouter(s *ghttp.Server) {
 			product.NewV1().GetCategoryList,
 			product.NewV1().GetList,
 			product.NewV1().GetDetail,
+			product.NewV1().GetWxMiniProgramCode,
 		).Middleware(middleware.Response)
 
 		// 读取操作

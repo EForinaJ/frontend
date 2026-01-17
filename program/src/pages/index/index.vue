@@ -85,7 +85,7 @@
         </view>
       </view>
 
-      <view class="mx-30rpx mt-40rpx">
+      <view v-if="!fetchLoading && detail" class="mx-30rpx mt-40rpx">
         <view class="shadow-2xl 
         bg-secondary rounded-3xl mt-20rpx">
           <view class="flex justify-between items-center px-30rpx py-16rpx">
@@ -105,13 +105,13 @@
             >
                 <view class="flex gap-3">
                   <view 
-                  v-for="value in 8"
-                  @click="handelPush(`/pages/product/list?gameId=${38}`)"
+                  v-for="item in detail.gameList" :key="item.id"
+                  @click="handelPush(`/pages/product/list?gameId=${item.id}`)"
                   class=" w-160rpx
                   px-16rpx bg-tertiary py-20rpx rounded-lg mb-30rpx
                   flex-col flex items-center justify-center">
-                    <image class="size-60rpx" src="~@/static/images/sanjz.png"/>
-                    <view class="text-xs mt-16rpx text-white">三角洲行动</view>
+                    <image class="size-60rpx" :src="item.pic"/>
+                    <view class="text-xs mt-16rpx text-white">{{item.name}}</view>
                   </view>
                 </view>
             </sar-scroll-list>
@@ -119,7 +119,7 @@
         </view>
       </view>
 
-      <view class="mx-30rpx mt-40rpx">
+      <view v-if="!fetchLoading && detail" class="mx-30rpx mt-40rpx">
         <view class="text-xl font-bold pos-relative
         w-fit 
         after:content-[''] after:w-full 
@@ -130,8 +130,9 @@
         ">
           热门预约
         </view>
-        <view class="
-        bg-primary rounded-lg p-20rpx mt-20rpx">
+        <view 
+        v-for="(item) in detail.productList" :key="item.game.id"
+        class="bg-primary rounded-lg p-20rpx mt-20rpx">
           <view class="rounded-lg">
             <view class="bg-white flex
              rounded-tl-3xl h-80rpx
@@ -140,10 +141,10 @@
                 <view class="w-fit pl-30rpx pr-70rpx flex items-center justify-center  gap-2
                 bg-white rounded-tl-3xl rounded-tr-3xl h-full">
                   <view class="rounded-full px-8rpx flex items-center justify-center">
-                    <image class="size-40rpx" src="~@/static/images/sanjz.png"/>
+                    <image class="size-40rpx" :src="item.game.pic"/>
                   </view>
                   <view class="font-bold text-[36rpx]">
-                    三角洲行动
+                    {{ item.game.name }}
                   </view>
                 </view>
               </view>
@@ -151,7 +152,8 @@
               <view class="flex-1
               bg-primary h-full flex justify-end items-center
               rounded-bl-3xl">
-                <view class="flex gap-2 items-center bg-white py-6rpx px-16rpx
+                <view  @click="handelPush(`/pages/product/list?gameId=${item.game.id}`)"
+                class="flex gap-2 items-center bg-white py-6rpx px-16rpx
                  rounded-t-2xl rounded-br-2xl">
                     <text class="text-xs">全部</text>
                     <view class="size-28rpx bg-black rounded-full flex items-center justify-center">
@@ -167,15 +169,16 @@
                 thumb-bg="var(--sar-danger)"
               >
                   <view class="flex gap-3">
-                    <view v-for="item in 8" class="w-260rpx rounded-xl bg-black">
+                    <view @click="handelPush(`/pages/product/detail?id=${vitem.id}`)"
+                    v-for="vitem in item.products" :key="vitem.id" class="w-260rpx rounded-xl bg-black">
                       <sar-image class="rounded-xl"
-                        src="https://fastly.jsdelivr.net/npm/@sard/assets/images/cat1.jpg"
+                        :src="vitem.pic"
                         width="100%"
                         height="180rpx"
                       />
                       <view class="px-16rpx py-16rpx">
                         <text class="text-sm line-clamp-1 leading-none overflow-hidden
-                      text-white ">保底300w双子星猛攻单</text>
+                      text-white ">{{ vitem.name }}</text>
                       </view>
                     </view>
                   </view>
@@ -190,8 +193,11 @@
 </template>
 
 <script lang="ts" setup>
+import { getSiteHome } from '@/api/site'
+import useBoolean from '@/hooks/boolean'
 import { useSiteStore } from '@/store/site'
 import { getStatusBarHeight, getTitleBarHeight, getWindowHeight } from '@/utils/systemInfo'
+import { toast } from 'sard-uniapp'
 
 defineOptions({
   name: 'Home',
@@ -213,8 +219,41 @@ const handelPush = (url:string) => {
 }
 
 
+const { bool:fetchLoading, setTrue:fetchSetTrue, setFalse:fetchSetFalse } = useBoolean()
+const detail = ref<Site.Dao.Home>()
+const getData = async () => {
+    fetchSetTrue()
+    uni.showLoading({
+        title:"加载中"
+    })
+    try {
+        const res = await getSiteHome()
+        detail.value = res
+        uni.hideLoading()
+    } catch (error) {
+      toast.fail(error)  
+    }
+    fetchSetFalse()
+}
+
+onShareAppMessage((option)=>{
+    return{
+      title:site.title,
+      path: '/pages/index/index'
+    }
+  }
+)
+
+// #ifdef MP-WEIXIN
+onShareTimeline(()=>{
+  return {
+    title: '分享到朋友圈',
+    path: '/pages/index/index'
+  }
+})
+// #endif
 onLoad(() => {
-  console.log('测试 uni API 自动引入: onLoad')
+  getData()
 })
 </script>
 

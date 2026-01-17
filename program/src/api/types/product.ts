@@ -20,6 +20,7 @@
 
         type Detail = {
             id: number,
+            code: string,
             name: string,
             pic: string,
             category: string,

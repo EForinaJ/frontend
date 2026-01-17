@@ -13,7 +13,13 @@
         />
             <view class="mx-30rpx mt-40rpx">
                 <view class="bg-white p-20rpx rounded-lg">
-                    <view class="text-[36rpx] font-bold">
+                    <view class="flex items-center gap-1">
+                        <view class="text-xs font-bold text-coolGray">
+                            服务编码:{{ detail.code }}
+                        </view>
+                        <view @click="handleCopy(detail.code)" class="i-carbon-copy text-xs text-coolGray" />
+                    </view>
+                    <view class="text-[36rpx] font-bold mt-16rpx">
                         {{ detail.name }}
                     </view>
                     <view class="bg-tertiary/10 p-20rpx rounded-lg mt-16rpx">
@@ -51,9 +57,10 @@
 
         <view class="fixed bottom-0 w-full bg-white">
             <view class="mx-30rpx h-100rpx flex gap-3">
-                <view class="w-100rpx
-                flex items-center justify-center">
-                    <view class="i-carbon-share text-xl"/>
+                <view class="w-100rpx flex items-center justify-center">
+                    <sar-button @click="handleShare"  type="text" round size="medium" >
+                        <view class="i-carbon-share text-xl"/>
+                    </sar-button>
                 </view>
                 <view class="flex-1 flex items-center justify-center">
                     <sar-button theme="danger">咨询服务</sar-button>
@@ -99,6 +106,26 @@ const getData = async () => {
     fetchSetFalse()
 }
 
+const handleCopy = (e:string) =>{
+    uni.setClipboardData({
+    data: e,
+    success: () => {
+        uni.showToast({
+            title: '复制成功',
+            icon: 'success'
+        });
+    },
+    fail: (err) => {
+        console.log('复制失败', err);
+    }
+    });
+}
+
+
+const handleShare = () => {
+    uni.navigateTo({ url: `/pages/share/index?id=${id.value}` })
+}
+
 
 onLoad((options)=>{
     if (options.id == undefined) {
@@ -107,4 +134,21 @@ onLoad((options)=>{
     id.value = Number(options.id)
     getData()
 })
+
+onShareAppMessage((option)=>{
+    return{
+      title: detail.value.name,
+      path: `/pages/product/detail?id=${id.value}`
+    }
+  }
+)
+
+// #ifdef MP-WEIXIN
+onShareTimeline(()=>{
+  return {
+    title: detail.value.name,
+    path: `/pages/product/detail?id=${id.value}`
+  }
+})
+// #endif
 </script>

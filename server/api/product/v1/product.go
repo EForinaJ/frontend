@@ -32,3 +32,11 @@ type GetDetailReq struct {
 type GetDetailRes struct {
 	*dao_product.Detail
 }
+
+type GetWxMiniProgramCodeReq struct {
+	g.Meta `path:"/product/wx/mini/program/code" method:"get" tags:"商品" summary:"获取信息"`
+	Id     int64 `p:"id" v:"required|integer|min:1#请输入id|id类型必须是整型|id最小为1" dc:"id"`
+}
+type GetWxMiniProgramCodeRes struct {
+	QrCode string `json:"qrCode" dc:"小程序二维码"`
+}

@@ -26,5 +26,25 @@
             title: string;
             content: string;
         }
+
+        type Home = {
+            gameList: {
+                id:number;
+                name:string;
+                pic:string;
+            }[];
+            productList: {
+                game:{
+                    id:number;
+                    name:string;
+                    pic:string;
+                };
+                products:{
+                    id:number;
+                    name:string;
+                    pic:string;
+                }[]
+            }[];
+        }
     }
 }

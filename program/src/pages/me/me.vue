@@ -53,7 +53,7 @@
         </view>
         <view class="flex items-center mt-2">
           <view class="text-3xl text-white font-bold">
-            {{ account.balance }}<text class="text-xs">{{ siteStore.siteInfo.symbol }}</text>
+            {{ account.balance }}<text class="text-xs">{{ site.symbol }}</text>
           </view>
         </view>
       </view>
@@ -170,7 +170,7 @@ definePage({
     navigationStyle:'custom'
   },
 })
-const siteStore = useSiteStore()
+const {siteInfo:site} = useSiteStore()
 const accountStore = useAccountStore()
 const tokenStore = useTokenStore()
 const { accountInfo:account } = storeToRefs(accountStore)
@@ -181,7 +181,22 @@ const handelPush = (url:string) => {
   uni.navigateTo({url: url})
 }
 
+onShareAppMessage((option)=>{
+    return{
+      title: site.title,
+      path: '/pages/index/index'
+    }
+  }
+)
 
+// #ifdef MP-WEIXIN
+onShareTimeline(()=>{
+  return {
+    title: site.title,
+    path: '/pages/index/index'
+  }
+})
+// #endif
 </script>
 
 
