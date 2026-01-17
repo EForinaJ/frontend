@@ -15,6 +15,12 @@
             fileType: Array<string>,
             imageType: Array<string>,
             symbol: string;   // 货币类型
+            contact: {
+                platform:string
+                number:string
+                icon:string
+                wechat:string
+            }
         }
         type Protocol = {
             title: string;

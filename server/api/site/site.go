@@ -15,4 +15,5 @@ type ISiteV1 interface {
 	GetAboutUs(ctx context.Context, req *v1.GetAboutUsReq) (res *v1.GetAboutUsRes, err error)
 	GetPrivacyPolicy(ctx context.Context, req *v1.GetPrivacyPolicyReq) (res *v1.GetPrivacyPolicyRes, err error)
 	GetUserAgreement(ctx context.Context, req *v1.GetUserAgreementReq) (res *v1.GetUserAgreementRes, err error)
+	GetOrderInstructions(ctx context.Context, req *v1.GetOrderInstructionsReq) (res *v1.GetOrderInstructionsRes, err error)
 }

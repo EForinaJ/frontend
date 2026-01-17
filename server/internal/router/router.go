@@ -4,6 +4,7 @@ import (
 	"server/internal/controller/account"
 	"server/internal/controller/auth"
 	"server/internal/controller/order"
+	"server/internal/controller/product"
 	"server/internal/controller/site"
 	"server/internal/controller/upload"
 	"server/internal/middleware"
@@ -19,6 +20,9 @@ func LoadRouter(s *ghttp.Server) {
 		group.Bind(
 			site.NewV1(),
 			auth.NewV1(),
+			product.NewV1().GetCategoryList,
+			product.NewV1().GetList,
+			product.NewV1().GetDetail,
 		).Middleware(middleware.Response)
 
 		// 读取操作

@@ -10,7 +10,7 @@
             tracking-wider 
             font-bold  flex items-center
           ">
-            PRO玩家
+            {{site.title}}
           </view>
         </view>
       </view>
@@ -41,13 +41,14 @@
           <view class="ribbon-2">
             <view class="flex-1 flex items-center justify-center  gap-2
               bg-secondary rounded-tr-xl rounded-br-xl">
-                <image class="size-48rpx" src="~@/static/images/kook.png"/>
-                <view class="text-white text-[36rpx]">KOOK频道: 265348521</view>
+                <image class="size-48rpx" :src="site.contact.icon"/>
+                <view class="text-white text-[36rpx] font-bold">{{site.contact.platform}}频道: {{site.contact.number}}</view>
               </view>
           </view>
 
           <view class="flex gap-1 px-40rpx pb-40rpx">
-            <view class="rounded-tl-xl rounded-bl-xl pos-relative
+            <view @click="handelPush(`/pages/join/index`)"
+            class="rounded-tl-xl rounded-bl-xl pos-relative
             flex-1 bg-secondary  clip-l p-20rpx">
               <view class="stroke-join 
               text-white tracking-[4rpx]
@@ -63,14 +64,18 @@
                 <image class="w-80rpx h-110rpx" src="~@/static/images/join.png"/>
               </view>
             </view>
+
             <view class="flex-col flex gap-3
             flex-1  clip-r">
-            <view class="flex-1 text-white text-sm font-semibold
+            <button open-type="contact"
+            class="flex-1 w-full text-white text-sm font-semibold
               flex items-center justify-center
               bg-secondary rounded-tr-xl rounded-br-xl">
-                在线客服
-              </view>
-              <view class="flex-1 text-white text-sm font-semibold
+              在线客服
+            </button>
+              <view 
+               @click="handelPush(`/pages-protocol/instructions/index`)"
+              class="flex-1 text-white text-sm font-semibold
               flex items-center justify-center
               bg-secondary rounded-tr-xl rounded-br-xl">
                 预约须知
@@ -101,6 +106,7 @@
                 <view class="flex gap-3">
                   <view 
                   v-for="value in 8"
+                  @click="handelPush(`/pages/product/list?gameId=${38}`)"
                   class=" w-160rpx
                   px-16rpx bg-tertiary py-20rpx rounded-lg mb-30rpx
                   flex-col flex items-center justify-center">
@@ -184,6 +190,7 @@
 </template>
 
 <script lang="ts" setup>
+import { useSiteStore } from '@/store/site'
 import { getStatusBarHeight, getTitleBarHeight, getWindowHeight } from '@/utils/systemInfo'
 
 defineOptions({
@@ -199,25 +206,12 @@ definePage({
   },
 })
 
+const { siteInfo:site } = useSiteStore()
 
-const rows = ref(
-  Array(16)
-    .fill(0)
-    .reduce(
-      (rows, _, i) => {
-        rows[i % 2].push({
-          text: '文字' + (i + 1),
-          icon: 'image',
-        })
-        return rows
-      },
-      [[], []],
-    ),
-)
-const description = ref(
-  'unibest 是一个集成了多种工具和技术的 uniapp 开发模板，由 uniapp + Vue3 + Ts + Vite5 + UnoCss + VSCode 构建，模板具有代码提示、自动格式化、统一配置、代码片段等功能，并内置了许多常用的基本组件和基本功能，让你编写 uniapp 拥有 best 体验。',
-)
-console.log('index/index 首页打印了')
+const handelPush = (url:string) => {
+  uni.navigateTo({url: url})
+}
+
 
 onLoad(() => {
   console.log('测试 uni API 自动引入: onLoad')
@@ -279,7 +273,6 @@ onLoad(() => {
 
 .clip-r {
   clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%);
-  
 }
 .clip-l {
   clip-path: polygon(0% 0%, 100% 0%, 90% 100%, 0% 100%);

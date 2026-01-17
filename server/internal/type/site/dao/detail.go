@@ -14,4 +14,5 @@ type Detail struct {
 	ImageSize   int      `json:"imageSize" dc:"图片最大上传体积"`
 	ImageType   []string `json:"imageType" dc:"所支持的图片上传类型"`
 	Symbol      string   `json:"symbol" dc:"支付符号，表示支付类型或货币类型"`
+	Contact     *Contact `json:"contact" dc:"联系信息"`
 }

@@ -34,3 +34,10 @@ type GetUserAgreementReq struct {
 type GetUserAgreementRes struct {
 	*dao_site.Protocol
 }
+
+type GetOrderInstructionsReq struct {
+	g.Meta `path:"/site/order/instructions" method:"get" tags:"站点" summary:"下单须知"`
+}
+type GetOrderInstructionsRes struct {
+	*dao_site.Protocol
+}

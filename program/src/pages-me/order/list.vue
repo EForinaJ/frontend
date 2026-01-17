@@ -155,7 +155,6 @@ definePage({
    },
 })
 
-const current = ref(0)
 const option = ref<TabOption[]>([
   { title: '全部', name: 0 },
   { title: '待付款', name: OrderStatus.PendingPayment },
@@ -181,7 +180,7 @@ const getData = async () =>{
     try {
         const res = await getOrderList(query)
         list.value = [...list.value,...res.list]
-        loadMoreStatus.value = query.limit < res.list.length ? 'incomplete' : 'complete'
+        loadMoreStatus.value = list.value.length < res.total ? 'incomplete' : 'complete'
     } catch (error) {
       toast.fail(error)  
     }
@@ -206,6 +205,7 @@ onPageScroll(({ scrollTop }) => {
   pullDownRefresh.value?.enableToRefresh(scrollTop === 0)
 })
 const onRefresh = async () => {
+    query.page  = 1
     list.value = []
     fetchListSetTrue()
     await  getData()

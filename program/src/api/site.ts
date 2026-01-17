@@ -16,3 +16,7 @@ export function getSiteUserAgreement() {
   return http.get<Site.Dao.Protocol>('/site/user/agreement')
 }
 
+export function getSiteOrderInstructions() {
+  return http.get<Site.Dao.Protocol>('/site/order/instructions')
+}
+

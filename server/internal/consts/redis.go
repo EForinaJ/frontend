@@ -15,7 +15,8 @@ const (
 	WechatMiniProgramSetting = "WechatMiniProgramSetting"
 	WechatPaySetting         = "WechatPaySetting"
 	//  ------------- 协议key
-	AboutUs       = "AboutUs"
-	PrivacyPolicy = "PrivacyPolicy"
-	UserAgreement = "UserAgreement"
+	AboutUs           = "AboutUs"
+	PrivacyPolicy     = "PrivacyPolicy"
+	UserAgreement     = "UserAgreement"
+	OrderInstructions = "orderInstructions"
 )

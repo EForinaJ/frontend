@@ -14,7 +14,7 @@ import (
 
 // GetInfo implements service.ISite.
 func (s *sSite) GetInfo(ctx context.Context) (res *dao_site.Detail, err error) {
-	options, err := g.Redis().Get(ctx, "site")
+	options, err := g.Redis().Get(ctx, "frontent_site")
 	if err != nil {
 		return nil, utils_error.Err(response.CACHE_READ_ERROR, response.CodeMsg(response.CACHE_READ_ERROR))
 	}
@@ -61,8 +61,25 @@ func (s *sSite) GetInfo(ctx context.Context) (res *dao_site.Detail, err error) {
 	site.ImageSize = fileJson.Get("imageSize").Int()
 	site.ImageType = fileJson.Get("imageType").Strings()
 
+	contactSetting, err := dao.SysConfig.Ctx(ctx).
+		Where(dao.SysConfig.Columns().Key, consts.ContactSetting).
+		Value(dao.SysConfig.Columns().Value)
+	if err != nil {
+		return nil, utils_error.Err(response.DB_READ_ERROR, response.CodeMsg(response.DB_READ_ERROR))
+	}
+	contactJson, err := gjson.DecodeToJson(contactSetting)
+	if err != nil {
+		return nil, utils_error.Err(response.DB_READ_ERROR, response.CodeMsg(response.DB_READ_ERROR))
+	}
+	var contact *dao_site.Contact
+	err = contactJson.Scan(&contact)
+	if err != nil {
+		return nil, utils_error.Err(response.DB_READ_ERROR, response.CodeMsg(response.DB_READ_ERROR))
+	}
+	site.Contact = contact
+
 	res = &site
-	err = g.Redis().SetEX(ctx, "site", site, 600)
+	err = g.Redis().SetEX(ctx, "frontent_site", site, 600)
 	if err != nil {
 		return nil, utils_error.Err(response.CACHE_SAVE_ERROR, response.CodeMsg(response.CACHE_SAVE_ERROR))
 	}
