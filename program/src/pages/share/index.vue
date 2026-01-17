@@ -5,7 +5,18 @@
        <Bar arrow
         title="商品分享"
        />
-       <l-painter :board="poster"/>
+       <view :style="{minHeight: getWindowHeight()-getStatusBarHeight()-getStatusBarHeight()-getTitleBarHeight()-getTitleBarHeight() + 'px'}"
+       class="mx-30rpx flex items-center justify-center flex-col">
+            <image :src="path" mode="widthFix" />
+            <view class="mt-30rpx">
+                <sar-button @click="saveAlbum" type="default">保存到相册</sar-button>
+            </view>
+       </view>
+       <l-painter  ref="posterRefs"
+        isCanvasToTempFilePath
+        @success="path = $event"
+        hidden
+       :board="poster"/>
     </view>
 </template>
 
@@ -30,7 +41,6 @@ const id = ref<number>(0)
 const {siteInfo:site} = useSiteStore()
 
 const poster = ref()
-
 const { bool:fetchLoading, setTrue:fetchSetTrue, setFalse:fetchSetFalse } = useBoolean()
 const detail = ref<Product.Dao.Detail>()
 const getData = async () => {
@@ -251,6 +261,7 @@ const getData = async () => {
     }
     fetchSetFalse()
 }
+const path = ref<string>("")
 const qrCode = ref<string>("")
 const getCode = async () =>{
     try {
@@ -261,6 +272,25 @@ const getCode = async () =>{
       toast.fail(error)  
     }
     
+}
+const posterRefs = ref()
+const saveAlbum = ()=> {
+    posterRefs.value.canvasToTempFilePathSync({
+    fileType: "jpg",
+    // 如果返回的是base64是无法使用 saveImageToPhotosAlbum，需要设置 pathType为url
+    pathType: 'url',
+    quality: 1,
+    success: (res) => {
+        console.log(res.tempFilePath);
+        // 非H5 保存到相册
+        uni.saveImageToPhotosAlbum({
+            filePath: res.tempFilePath,
+            success: function () {
+                console.log('save success');
+            }
+        });
+    },
+    })
 }
 
 onLoad((options)=>{

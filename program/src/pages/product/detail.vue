@@ -59,7 +59,12 @@
             <view class="mx-30rpx h-100rpx flex gap-3">
                 <view class="w-100rpx flex items-center justify-center">
                     <sar-button @click="handleShare"  type="text" round size="medium" >
-                        <view class="i-carbon-share text-xl"/>
+                        <view class="i-solar-box-minimalistic-bold text-xl"/>
+                    </sar-button>
+                </view>
+                <view class="w-100rpx flex items-center justify-center">
+                    <sar-button open-type="share" type="text" round size="medium" >
+                        <view class="i-solar-square-share-line-bold-duotone text-xl"/>
                     </sar-button>
                 </view>
                 <view class="flex-1 flex items-center justify-center">
@@ -68,6 +73,7 @@
             </view>
             <view style="height: env(safe-area-inset-bottom); flex: none"></view>
         </view>
+        
        <sar-toast-agent />
     </view>
 </template>
@@ -78,8 +84,9 @@ import Bar from '@/components/bar.vue';
 import useBoolean from '@/hooks/boolean';
 import { NOT_FOUND_PAGE } from '@/router/config';
 import { useSiteStore } from '@/store/site';
+import { getImageUrl } from '@/utils/imageHelper';
 import {  getWindowHeight } from '@/utils/systemInfo';
-import {  toast } from 'sard-uniapp';
+import {  PopupProps, toast } from 'sard-uniapp';
 
 definePage({
    style: {
@@ -122,9 +129,10 @@ const handleCopy = (e:string) =>{
 }
 
 
-const handleShare = () => {
+const handleShare = async (e: PopupProps['effect']) => {
     uni.navigateTo({ url: `/pages/share/index?id=${id.value}` })
 }
+
 
 
 onLoad((options)=>{
