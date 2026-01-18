@@ -7,7 +7,7 @@
        />
        <view v-if="!fetchLoading && detail">
         <sar-image
-            :src="detail.pic"
+            :src="getImageUrl(detail.pic)"
             width="100%"
             height="400rpx"
         />

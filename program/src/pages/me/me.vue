@@ -11,7 +11,7 @@
       <view class="
       pos-absolute top-[-40rpx] 
       size-120rpx rounded-full border-6rpx border-white border-solid">
-        <sar-avatar :src="account.avatar" size="120rpx" icon-size="48rpx" />
+        <sar-avatar :src="getImageUrl(account.avatar)" size="120rpx" icon-size="48rpx" />
       </view>
       <view class="size-120rpx"></view>
       <view class="flex-1">
@@ -164,6 +164,7 @@ import { getStatusBarHeight, getTitleBarHeight, getWindowHeight } from '@/utils/
 import { toLoginPage } from "@/utils/toLoginPage";
 import { useSiteStore } from "@/store/site";
 import { OrderStatus } from '@/enum/status';
+import { getImageUrl } from '@/utils/imageHelper';
 definePage({
   style: {
     navigationBarTitleText: '我的',

@@ -41,7 +41,7 @@
           <view class="ribbon-2">
             <view class="flex-1 flex items-center justify-center  gap-2
               bg-secondary rounded-tr-xl rounded-br-xl">
-                <image class="size-48rpx" :src="site.contact.icon"/>
+                <image class="size-48rpx rounded-lg" :src="getImageUrl(site.contact.icon)"/>
                 <view class="text-white text-[36rpx] font-bold">{{site.contact.platform}}频道: {{site.contact.number}}</view>
               </view>
           </view>
@@ -110,7 +110,7 @@
                   class=" w-160rpx
                   px-16rpx bg-tertiary py-20rpx rounded-lg mb-30rpx
                   flex-col flex items-center justify-center">
-                    <image class="size-60rpx" :src="item.pic"/>
+                    <image class="size-60rpx rounded-lg" :src="getImageUrl(item.pic)"/>
                     <view class="text-xs mt-16rpx text-white">{{item.name}}</view>
                   </view>
                 </view>
@@ -141,7 +141,7 @@
                 <view class="w-fit pl-30rpx pr-70rpx flex items-center justify-center  gap-2
                 bg-white rounded-tl-3xl rounded-tr-3xl h-full">
                   <view class="rounded-full px-8rpx flex items-center justify-center">
-                    <image class="size-40rpx" :src="item.game.pic"/>
+                    <image class="size-40rpx" :src="getImageUrl(item.game.pic)"/>
                   </view>
                   <view class="font-bold text-[36rpx]">
                     {{ item.game.name }}
@@ -172,7 +172,7 @@
                     <view @click="handelPush(`/pages/product/detail?id=${vitem.id}`)"
                     v-for="vitem in item.products" :key="vitem.id" class="w-260rpx rounded-xl bg-black">
                       <sar-image class="rounded-xl"
-                        :src="vitem.pic"
+                        :src="getImageUrl(vitem.pic)"
                         width="100%"
                         height="180rpx"
                       />
@@ -196,6 +196,7 @@
 import { getSiteHome } from '@/api/site'
 import useBoolean from '@/hooks/boolean'
 import { useSiteStore } from '@/store/site'
+import { getImageUrl } from '@/utils/imageHelper'
 import { getStatusBarHeight, getTitleBarHeight, getWindowHeight } from '@/utils/systemInfo'
 import { toast } from 'sard-uniapp'
 

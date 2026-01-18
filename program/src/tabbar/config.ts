@@ -26,8 +26,8 @@ export const selectedTabbarStrategy = TABBAR_STRATEGY_MAP.CUSTOM_TABBAR_WITH_CAC
 // TODO: 2/3. 使用 NATIVE_TABBAR 时，更新下面的 tabbar 配置
 export const nativeTabbarList: NativeTabBarItem[] = [
   {
-    iconPath: 'static/tabbar/home.png',
-    selectedIconPath: 'static/tabbar/homeHL.png',
+    iconPath: 'static/tabbar/Home.png',
+    selectedIconPath: 'static/tabbar/HomeFill.png',
     pagePath: 'pages/index/index',
     text: '首页',
   },
@@ -49,7 +49,7 @@ export const customTabbarList: CustomTabBarItem[] = [
     // 1）在fg-tabbar.vue页面上引入一下并注释掉（见tabbar/index.vue代码第2行）
     // 2）配置到 unocss.config.ts 的 safelist 中
     iconType: 'unocss',
-    icon: 'i-carbon-home',
+    icon: 'i-solar-home-smile-angle-bold',
     // badge: 'dot',
   },
   {
@@ -58,7 +58,7 @@ export const customTabbarList: CustomTabBarItem[] = [
     // 1）在fg-tabbar.vue页面上引入一下并注释掉（见tabbar/index.vue代码第2行）
     // 2）配置到 unocss.config.ts 的 safelist 中
     iconType: 'unocss',
-    icon: 'i-carbon-user',
+    icon: 'i-solar-users-group-rounded-bold-duotone',
     // badge: 10,
   },
   // 其他类型演示
@@ -81,6 +81,14 @@ export const customTabbarList: CustomTabBarItem[] = [
   // {
   //   pagePath: 'pages/index/index',
   //   text: '首页',
+  //   // 使用 ‘image’时，需要配置 icon + iconActive 2张图片
+  //   iconType: 'image',
+  //   icon: '/static/tabbar/Home.png',
+  //   iconActive: '/static/tabbar/HomeFill.png',
+  // },
+  // {
+  //   pagePath: 'pages/me/me',
+  //   text: '我的',
   //   // 使用 ‘image’时，需要配置 icon + iconActive 2张图片
   //   iconType: 'image',
   //   icon: '/static/tabbar/home.png',

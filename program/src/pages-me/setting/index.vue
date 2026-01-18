@@ -12,8 +12,8 @@
             <text class="text-text-primary">头像</text>
         </template>
         <template #value>
-            <sar-avatar size="84rpx" icon-size="48rpx" v-if="avatar"  :src="avatar" />
-            <sar-avatar size="84rpx" icon-size="48rpx" v-if="!avatar" :src="account.avatar" />
+            <sar-avatar size="84rpx" icon-size="48rpx" v-if="avatar"  :src="getImageUrl(avatar)" />
+            <sar-avatar size="84rpx" icon-size="48rpx" v-if="!avatar" :src="getImageUrl(account.avatar)" />
         </template>
         </sar-list-item>
     </sar-list>
@@ -155,6 +155,7 @@ import useBoolean from '@/hooks/boolean';
 import { SexType } from '@/enum/type';
 import { ActionSheetItem, formatDate } from 'sard-uniapp';
 import Bar from '@/components/bar.vue';
+import { getImageUrl } from '@/utils/imageHelper';
 
 
 definePage({

@@ -68,7 +68,7 @@
                                 @click="handleDetail(item.id)"
                                 v-for="item in list" :key="item.id" class="flex mb-30rpx" >
                                     <sar-image
-                                        :src="item.pic"
+                                        :src="getImageUrl(item.pic)"
                                         width="160rpx"
                                         height="160rpx"
                                         class="rounded-tl-lg rounded-bl-lg"
@@ -117,6 +117,7 @@ import { getProductCategoryList, getProductList } from '@/api/product';
 import useBoolean from '@/hooks/boolean';
 import { NOT_FOUND_PAGE } from '@/router/config';
 import { useSiteStore } from '@/store/site';
+import { getImageUrl } from '@/utils/imageHelper';
 import { getStatusBarHeight, getTitleBarHeight, getWindowHeight } from '@/utils/systemInfo';
 import { LoadMoreStatus, toast } from 'sard-uniapp';
 
